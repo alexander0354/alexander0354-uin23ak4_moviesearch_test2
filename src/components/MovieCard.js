@@ -8,13 +8,15 @@ function MovieCard({ movie }) {
   const year = movie.release_date ? movie.release_date.substring(0, 4) : "Year Not Available";
 
   return (
-    <li className="movie-card">
-      <img src={posterUrl} alt={title} />
-      <h3>{title}</h3>
-      <p>{year}</p>
+    <div className="movie-card">
+      <h3>{movie.title}</h3>
+      <img
+        src={posterUrl}
+        alt={movie.title}
+      />
       <Link to={`/movie/${movie.id}`}>More about this movie</Link>
-    </li>
+    </div>
   );
-}
+};
 
 export default MovieCard;
