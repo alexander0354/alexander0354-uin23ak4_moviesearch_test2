@@ -3,17 +3,17 @@ import { useParams } from 'react-router-dom';
 import '../sass/MovieProfile.scss';
 
 function MovieProfile() {
-    const { movieId } = useParams();
-    console.log('movieId:', movieId);
-    const [movie, setMovie] = useState(null);
+  const { id } = useParams();
+  console.log('movieId:', id);
+  const [movie, setMovie] = useState(null);
 
-    useEffect(() => {
-        if (movieId) {
-          fetchMovieDetails(movieId);
-        }
-      }, [movieId]);
+  useEffect(() => {
+    if (id) {
+      fetchMovieDetails(id);
+    }
+  }, [id]);
 
-    const fetchMovieDetails = async (movieId) => {
+  const fetchMovieDetails = async (movieId) => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=ffceff3589088ca1ba677a8bfff757d8&append_to_response=credits`);
     const data = await response.json();
     setMovie(data);

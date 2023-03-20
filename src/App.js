@@ -9,22 +9,20 @@ function App() {
     <Router>
       <div className="App">
         <header>
-          <h1>James Bond Movies</h1>
+          <h1>Movies</h1>
         </header>
         <main>
-          
             <Route exact path="/" component={MovieList} />
             <Route path="/search/:query" component={MovieList} />
             <Route path="/movie/:id" component={MovieProfile} />
-          
         </main>
         <footer>
           <span>Del nettsiden vår!</span>
           <div className="social-media">
-            <a href="https://www.facebook.com" target="_blank">Facebook</a>
-            <a href="https://www.twitter.com" target="_blank">Twitter</a>
-            <a href="https://www.instagram.com" target="_blank">instagram</a>
-            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://www.facebook.com">Facebook</a>
+            <a href="https://www.twitter.com">Twitter</a>
+            <a href="https://www.instagram.com">instagram</a>
+            <a href="https://www.linkedin.com">LinkedIn</a>
           </div>
         </footer>
       </div>
