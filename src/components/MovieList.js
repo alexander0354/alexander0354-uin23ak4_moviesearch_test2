@@ -1,51 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import "../sass/MovieList.scss";
 import MovieCard from "./MovieCard";
+import SearchBar from "./SearchBar";
 
 function MovieList() {
-  const history = useHistory();
   const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
+    // "default search query"
     fetchMovies("James+Bond");
   }, []);
 
-  const fetchMovies = async (searchQuery) => {
+  // Async - await syntax for å fetche filmers data fra APIet
+  const fetchMovies = async (query) => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=ffceff3589088ca1ba677a8bfff757d8&query=${searchQuery}`
+      `https://api.themoviedb.org/3/search/movie?api_key=ffceff3589088ca1ba677a8bfff757d8&query=${query}`
     );
     const data = await response.json();
+    // Fetcher filmer
     setMovies(data.results);
   };
 
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleSearchFormSubmit = (event) => {
-    event.preventDefault();
-    if (searchQuery) {
-      const urlEncodedSearchQuery = encodeURIComponent(searchQuery);
-      fetchMovies(urlEncodedSearchQuery);
-    }
+  const handleSearch = (searchTerm) => {
+    fetchMovies(searchTerm);
   };
 
   return (
-    <div className="movie-list">
-      <form onSubmit={handleSearchFormSubmit}>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-          placeholder="Search for a movie"
-        />
-        <button type="submit">Search</button>
-      </form>
-      {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
+    <div>
+      <SearchBar onSearch={handleSearch} />
+      <div className="movie-list">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 }

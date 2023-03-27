@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import MovieList from './components/MovieList';
-import MovieProfile from './components/MovieProfile';
-import './sass/App.scss';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./sass/App.scss";
+import MovieList from "./components/MovieList";
+import MovieProfile from "./components/MovieProfile";
 
 function App() {
   return (
@@ -12,22 +12,28 @@ function App() {
           <h1>Movies</h1>
         </header>
         <main>
-            <Route exact path="/" component={MovieList} />
-            <Route path="/search/:query" component={MovieList} />
+          <Switch>
+            <Route path="/" exact component={MovieList} />
+            <Route path="/search/:searchQuery" component={MovieList} />
             <Route path="/movie/:id" component={MovieProfile} />
+          </Switch>
         </main>
         <footer>
-          <span>Del nettsiden vår!</span>
-          <div className="social-media">
-            <a href="https://www.facebook.com">Facebook</a>
-            <a href="https://www.twitter.com">Twitter</a>
-            <a href="https://www.instagram.com">instagram</a>
-            <a href="https://www.linkedin.com">LinkedIn</a>
-          </div>
-        </footer>
-      </div>
+        <span>Del nettsiden vår!</span>
+        <div className="social-media">
+        <a href="https://www.facebook.com">Facebook</a>
+        <a href="https://www.twitter.com">Twitter</a>
+        <a href="https://www.instagram.com">instagram</a>
+        <a href="https://www.linkedin.com">LinkedIn</a>
+        </div>
+        </footer> 
+     </div>
     </Router>
   );
 }
 
 export default App;
+
+
+
+

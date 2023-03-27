@@ -4,13 +4,7 @@
   gap: 2rem;
   justify-items: center;
   align-items: center;
-
-  form {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
+  
   & > div {
     &:hover {
       transform: translateY(-5px);

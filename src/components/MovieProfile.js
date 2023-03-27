@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../sass/MovieProfile.scss';
 
+
+//Komponent for mer detaljert oversikt over en enkelt film (Ekstraoppgave)
+
+
 function MovieProfile() {
   const { id } = useParams();
   console.log('movieId:', id);
