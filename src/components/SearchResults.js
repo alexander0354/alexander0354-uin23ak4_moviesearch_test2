@@ -22,10 +22,10 @@ function SearchResults() {
 
   const fetchSearchResults = async (query) => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=ffceff3589088ca1ba677a8bfff757d8&query=${query}`
+      `https://www.omdbapi.com/?apikey=42183318&s=${query}`
     );
     const data = await response.json();
-    setSearchResults(data.results);
+    setSearchResults(data.Search);
   };
 
   return (

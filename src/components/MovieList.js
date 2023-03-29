@@ -11,14 +11,14 @@ function MovieList() {
   }, []);
 
   // Async - await syntax for å fetche filmers data fra APIet
-  const fetchMovies = async (query) => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=ffceff3589088ca1ba677a8bfff757d8&query=${query}`
-    );
-    const data = await response.json();
-    // Fetcher filmer
-    setMovies(data.results);
-  };
+const fetchMovies = async (query) => {
+  const response = await fetch(
+    `https://www.omdbapi.com/?apikey=42183318&s=${query}`
+  );
+  const data = await response.json();
+  //Henter filmer 
+  setMovies(data.Search);
+};
 
   const handleSearch = (searchTerm) => {
     fetchMovies(searchTerm);
@@ -28,9 +28,7 @@ function MovieList() {
     <div>
       <SearchBar onSearch={handleSearch} />
       <div className="movie-list">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+      {movies.map((movie) => <MovieCard key={movie.imdbID} movie={movie} />)}
       </div>
     </div>
   );
