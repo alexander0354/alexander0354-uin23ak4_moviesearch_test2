@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+/*import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 //Komponent for å vise info av enkelt film basert på filmens ID.
@@ -51,4 +51,4 @@ const Movie = () => {
   return <>{content}</>;
 };
 
-export default Movie;
+export default Movie;*/
