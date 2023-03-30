@@ -30,7 +30,7 @@ function SearchResults() {
 
   return (
     <div className="search-results">
-      <h2>Search Results</h2>
+      <h2>Søkeresultat</h2>
       <SearchBar />
       <ul>
         {searchResults.map((movie) => (
