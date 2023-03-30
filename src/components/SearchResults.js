@@ -20,13 +20,13 @@ function SearchResults() {
     }
   }, [searchQuery]);
 
-  const fetchSearchResults = async (query) => {
-    const response = await fetch(
-      `https://www.omdbapi.com/?apikey=42183318&s=${query}`
-    );
-    const data = await response.json();
-    setSearchResults(data.Search);
-  };
+const fetchSearchResults = async (query) => {
+  const response = await fetch(
+    `https://www.omdbapi.com/?apikey=42183318&s=${query}`
+  );
+  const data = await response.json();
+  setSearchResults(data.Search);
+};
 
   return (
     <div className="search-results">
