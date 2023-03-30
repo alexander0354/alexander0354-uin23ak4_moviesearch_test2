@@ -20,13 +20,13 @@ function SearchResults() {
     }
   }, [searchQuery]);
 
-const fetchSearchResults = async (query) => {
-  const response = await fetch(
-    `https://www.omdbapi.com/?apikey=42183318&s=${query}`
-  );
-  const data = await response.json();
-  setSearchResults(data.Search);
-};
+  const fetchSearchResults = async (query) => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=ffceff3589088ca1ba677a8bfff757d8&query=${query}`
+    );
+    const data = await response.json();
+    setSearchResults(data.results);
+  };
 
   return (
     <div className="search-results">

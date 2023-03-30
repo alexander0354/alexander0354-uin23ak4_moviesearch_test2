@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import "../sass/SearchBar.scss";
 
-//SearchBar komponent som skal håndtere søk etter det har blitt skrevet inn 3 tegn
-
+// SearchBar-komponent som håndterer søk etter at minst tre tegn har blitt skrevet inn
 function SearchBar({ onSearch }) {
   const { searchQuery } = useParams();    // Henter søkeord fra URL
   const [searchTerm, setSearchTerm] = useState(searchQuery || "");   // Setter opp søkeord som et state og bruker URL-søkeord (hvis det eksisterer)
   const history = useHistory();   // Bruker useHistory for å navigere til en annen URL ved innsending av skjema
   
-  const handleFormSubmit = async (event) => { // Håndterer innsending av søkeord
+  // Håndterer innsending av søkeord
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     if (searchTerm && searchTerm.length >= 3) {      // Søkeordet må ha minst tre tegn for å bli søkt etter
       history.push(`/search/${searchTerm}`);        // Navigerer til URL med søkeordet i pathet og bruker URL-parametere til å lagre søkeordet
@@ -27,7 +27,7 @@ function SearchBar({ onSearch }) {
     setSearchTerm(event.target.value);
   };
 
-   //Returnerer søkefeltet med funksjonalitet
+  // Returnerer søkefeltet med funksjonalitet for å søke etter filmer
   return (
     <form onSubmit={handleFormSubmit} className="search-bar">
       <input
@@ -42,8 +42,3 @@ function SearchBar({ onSearch }) {
 }
 
 export default SearchBar;
-
-
-
-
-
